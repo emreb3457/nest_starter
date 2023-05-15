@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/entity/user.entity';
 import * as bcryptjs from 'bcryptjs';
-import { CommonRepository } from 'src/repository/common.repository';
+import { CommonRepository } from 'src/repository/base.repository';
 import { Company } from 'src/entity/company.entity';
 import { CreateCompanyDto, UpdateCompanyDto } from 'src/dto/company.dto';
 import { Roles, userRoleId } from 'src/types/type';

@@ -3,12 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UpdateUserDto } from 'src/dto/user.dto';
 import { User } from 'src/entity/user.entity';
 import { Repository } from 'typeorm';
+import BaseRepository from './base.repository';
 
 @Injectable()
-export class UserRepository {
+export class UserRepository extends BaseRepository<User>{
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
-  ) {}
+  ) {
+    super(userRepository);
+  }
 
   async getUserById(id: number) {
     return this.userRepository.findOne({

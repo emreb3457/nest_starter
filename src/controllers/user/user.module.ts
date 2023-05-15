@@ -4,7 +4,7 @@ import { UserController } from './user.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entity/user.entity';
-import { CommonRepository } from 'src/repository/common.repository';
+import { CommonRepository } from 'src/repository/base.repository';
 import { UserRepository } from 'src/repository/user.repository';
 import { CompanyService } from '../company/company.service';
 import { CompanyModule } from '../company/company.module';
