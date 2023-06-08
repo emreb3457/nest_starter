@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './controllers/user/user.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from 'dotenv';
-import { dataSourceOptions } from './database/dataSource';
 import { CompanyModule } from './controllers/company/company.module';
+import { UserModule } from './controllers/user/user.module';
+import { dataSourceOptions } from './database/dataSource';
+import { TransformResponseInterceptor } from './interceptors/response.interceptor';
 
 config();
 @Module({
@@ -13,6 +15,11 @@ config();
     CompanyModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformResponseInterceptor,
+    },
+  ],
 })
 export class AppModule {}
